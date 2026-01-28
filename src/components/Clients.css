@@ -1,0 +1,38 @@
+.clients {
+  padding: 40px 0;
+  background-color: #ffffff;
+}
+
+.clients-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap; /* Force single row */
+  gap: 20px;
+  overflow-x: auto;
+}
+
+.client-logo {
+  flex: 1; /* Allow equal growth */
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100px; /* Minimum width to prevent crushing */
+}
+
+.client-logo img {
+  width: auto;
+  height: 80px; /* Fixed height for uniformity */
+  max-width: 250px; /* Allow wider logos like Bodesa */
+  object-fit: contain;
+  display: block;
+  mix-blend-mode: multiply;
+}
+
+.client-logo:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}

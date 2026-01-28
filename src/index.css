@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --primary: #111827; /* Dark almost black */
+  --secondary: #1f2937; /* Slightly lighter dark */
+  --accent: #2563eb; /* Blue accent for buttons/links */
+  --accent-hover: #1d4ed8;
+  --text-main: #1f2937;
+  --text-light: #f9fafb;
+  --text-muted: #6b7280;
+  --bg-light: #ffffff;
+  --bg-gray: #f3f4f6;
+
+  --font-main: "Outfit", sans-serif;
+
+  --container-width: 1200px;
+  --header-height: 80px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-light);
+  color: var(--text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section {
+  padding: 80px 0;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: var(--primary);
+  color: var(--text-light);
+  font-weight: 600;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+.btn:hover {
+  background-color: var(--secondary);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 2px solid var(--text-light);
+  color: var(--text-light);
+}
+
+.btn-outline:hover {
+  background-color: var(--text-light);
+  color: var(--primary);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+}

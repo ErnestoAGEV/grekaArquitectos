@@ -1,0 +1,38 @@
+.footer {
+  background-color: #0b111e; /* Darker than primary */
+  color: rgba(255,255,255,0.6);
+  padding: 40px 0;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.footer-links a {
+  color: white;
+  margin: 0 5px;
+}
+
+.social-links {
+  display: flex;
+  gap: 20px;
+}
+
+.social-links a {
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: var(--accent);
+}
+
+.copyright {
+  font-size: 0.8rem;
+  margin-top: 10px;
+}

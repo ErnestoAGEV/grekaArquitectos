@@ -1,0 +1,64 @@
+.hero {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  /* Using a placeholder unsplash image for architecture */
+  background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  color: var(--text-light);
+  margin-top: -80px; /* Counteract header height if fixed, or just let it overlap */
+  padding-top: 120px; /* Account for taller navbar (approx 100px) + spacing */
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  animation: fadeIn 1s ease-out;
+}
+
+.hero h1 {
+  font-size: 2.8rem; /* Adjusted for longer text */
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero p {
+  font-size: 1.25rem;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+  max-width: 600px;
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
