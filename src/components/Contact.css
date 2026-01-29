@@ -67,4 +67,20 @@
     grid-template-columns: 1fr;
     gap: 40px;
   }
+  
+  .contact-form {
+    padding: 24px; /* Reduced padding */
+  }
+
+  .contact-info {
+    text-align: center;
+  }
+  
+  .contact-info h2.text-left {
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: inline-block;
+    padding: 0 20px 20px;
+    margin-bottom: 20px;
+  }
 }

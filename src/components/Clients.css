@@ -10,6 +10,20 @@
   flex-wrap: nowrap; /* Force single row */
   gap: 20px;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+  padding-bottom: 10px; /* Space for scrollbar if visible, or breathing room */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.clients-flex::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.clients-flex {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+
 }
 
 .client-logo {

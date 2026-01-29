@@ -17,6 +17,11 @@
   --header-height: 80px;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -105,4 +110,19 @@ h6 {
   text-transform: uppercase;
   letter-spacing: 2px;
   text-align: center;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 0;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .container {
+    padding: 0 20px;
+  }
 }

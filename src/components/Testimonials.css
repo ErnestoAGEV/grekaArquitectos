@@ -54,3 +54,9 @@
   font-size: 0.8rem;
   letter-spacing: 1px;
 }
+
+@media (max-width: 600px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+}

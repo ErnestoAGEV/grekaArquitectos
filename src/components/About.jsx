@@ -1,26 +1,38 @@
-import './About.css';
+import Reveal from "./Reveal";
+import "./About.css";
 
 const About = () => {
   return (
     <section className="section about" id="about">
       <div className="container about-container">
-        <div className="about-image">
-          <img 
-            src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-            alt="Arquitectos fundadores" 
-          />
-        </div>
+        <Reveal>
+          <div className="about-image">
+            {/* Placeholder if local image is missing, utilizing a nice architecture shot */}
+            <img
+              src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Architecture Studio"
+            />
+          </div>
+        </Reveal>
+
         <div className="about-content">
-          <h2 className="section-title text-left">NOSOTROS</h2>
-          <p>
-            Nuestra filosofía se basa en la creación de arquitectura atemporal que armoniza con el entorno.
-            Creamos espacios funcionales y estéticos que inspiran y mejoran la calidad de vida de quienes los habitan.
-          </p>
-          <p>
-            Con más de una década de experiencia, nuestro equipo multidisciplinario aborda cada proyecto con pasión, 
-            desde la conceptualización hasta la ejecución final.
-          </p>
-          <a href="#contact" className="btn btn-outline-dark">Contáctanos</a>
+          <Reveal delay={0.2}>
+            <h2 className="section-title text-left">Sobre Nosotros</h2>
+            <p>
+              Somos un estudio de arquitectura comprometido con la excelencia en
+              el diseño y la funcionalidad. Creemos que cada proyecto es una
+              oportunidad para mejorar la calidad de vida de las personas y su
+              relación con el entorno.
+            </p>
+            <p>
+              Con más de 10 años de experiencia, nuestro equipo
+              multidisciplinario aborda cada desafío con creatividad, precisión
+              técnica y una profunda sensibilidad estética.
+            </p>
+            <a href="#contact" className="btn btn-outline-dark">
+              Contáctanos
+            </a>
+          </Reveal>
         </div>
       </div>
     </section>
