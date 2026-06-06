@@ -48,7 +48,7 @@ const Projects = () => {
                 className="project-card"
                 onClick={() => navigate(`/project/${project.id}`)}
               >
-                <img src={project.image} alt={project.title} />
+                <img src={project.image} alt={project.title} loading="lazy" />
                 <div className="project-overlay">
                   <h3>{project.title}</h3>
                   <span>{project.category}</span>

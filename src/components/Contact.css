@@ -1,6 +1,6 @@
 .contact {
-  background-color: var(--primary);
-  color: var(--text-light);
+  background-color: #111827;
+  color: #f9fafb;
 }
 
 .contact-container {
@@ -31,7 +31,7 @@
 }
 
 .contact-form {
-  background-color: #fff;
+  background-color: var(--bg-card);
   padding: 40px;
   border-radius: 8px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
@@ -50,6 +50,8 @@
   font-family: inherit;
   font-size: 1rem;
   transition: border-color 0.3s ease;
+  background-color: var(--bg-light);
+  color: var(--text-main);
 }
 
 .form-group input:focus,
@@ -62,20 +64,59 @@
   width: 100%;
 }
 
+.contact-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 300px;
+  gap: 16px;
+}
+
+.contact-success h3 {
+  color: var(--text-main);
+  font-size: 1.5rem;
+}
+
+.contact-success p {
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.contact-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.contact-map {
+  margin-top: 0;
+  line-height: 0;
+}
+
+.contact-map iframe {
+  filter: grayscale(80%) contrast(1.1);
+  transition: filter 0.3s ease;
+}
+
+.contact-map iframe:hover {
+  filter: grayscale(0%);
+}
+
 @media (max-width: 768px) {
   .contact-container {
     grid-template-columns: 1fr;
     gap: 40px;
   }
-  
+
   .contact-form {
-    padding: 24px; /* Reduced padding */
+    padding: 24px;
   }
 
   .contact-info {
     text-align: center;
   }
-  
+
   .contact-info h2.text-left {
     text-align: center;
     border-bottom: 1px solid rgba(255,255,255,0.1);

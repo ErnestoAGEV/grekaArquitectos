@@ -43,7 +43,7 @@ const Testimonials = () => {
             <Reveal key={t.id} delay={0.2}>
               <div className="testimonial-card">
                 <div className="testimonial-image">
-                  <img src={t.image} alt={t.name} />
+                  <img src={t.image} alt={t.name} loading="lazy" />
                 </div>
                 <div className="testimonial-content">
                   <p>"{t.quote}"</p>

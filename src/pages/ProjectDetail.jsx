@@ -1,11 +1,27 @@
+import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { projectsData } from "../data/projects";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import Lightbox from "../components/Lightbox";
 import "./ProjectDetail.css";
 
 const ProjectDetail = () => {
   const { id } = useParams();
   const project = projectsData.find((p) => p.id === parseInt(id));
+
+  const [lightboxIndex, setLightboxIndex] = useState(null);
+
+  // SEO - dynamic document title
+  useEffect(() => {
+    if (project) {
+      document.title = `${project.title} | Greka Arquitectos`;
+    } else {
+      document.title = "Proyecto no encontrado | Greka Arquitectos";
+    }
+    return () => {
+      document.title = "Greka Arquitectos";
+    };
+  }, [project]);
 
   if (!project) {
     return (
@@ -15,9 +31,8 @@ const ProjectDetail = () => {
     );
   }
 
-  // Logic for next project navigation
-  const nextProjectId = project.id < projectsData.length ? project.id + 1 : 1;
-  const nextProject = projectsData.find((p) => p.id === nextProjectId);
+  const currentIdx = projectsData.findIndex((p) => p.id === project.id);
+  const nextProject = projectsData[currentIdx + 1] || projectsData[0];
 
   return (
     <div className="project-detail">
@@ -72,8 +87,16 @@ const ProjectDetail = () => {
           <h2>Galería</h2>
           <div className="gallery-grid">
             {project.gallery.map((img, index) => (
-              <div key={index} className="gallery-item">
-                <img src={img} alt={`${project.title} view ${index + 1}`} />
+              <div
+                key={index}
+                className="gallery-item"
+                onClick={() => setLightboxIndex(index)}
+              >
+                <img
+                  src={img}
+                  alt={`${project.title} vista ${index + 1}`}
+                  loading="lazy"
+                />
               </div>
             ))}
           </div>
@@ -86,11 +109,20 @@ const ProjectDetail = () => {
 
           {nextProject && (
             <Link to={`/project/${nextProject.id}`} className="nav-btn">
-              Siguiente Proyecto: {nextProject.title} <ArrowRight size={20} />
+              Siguiente: {nextProject.title} <ArrowRight size={20} />
             </Link>
           )}
         </div>
       </div>
+
+      {lightboxIndex !== null && (
+        <Lightbox
+          images={project.gallery}
+          currentIndex={lightboxIndex}
+          onClose={() => setLightboxIndex(null)}
+          onNavigate={setLightboxIndex}
+        />
+      )}
     </div>
   );
 };

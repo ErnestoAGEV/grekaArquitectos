@@ -1,9 +1,26 @@
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import ProjectDetail from "./pages/ProjectDetail";
-import ScrollToTop from "./components/ScrollToTop"; // Helper to scroll top on nav
+import NotFound from "./pages/NotFound";
+import ScrollToTop from "./components/ScrollToTop";
+import WhatsAppButton from "./components/WhatsAppButton";
+import ThemeToggle from "./components/ThemeToggle";
+
+function AnimatedRoutes() {
+  const location = useLocation();
+
+  return (
+    <div className="page-transition" key={location.pathname}>
+      <Routes location={location}>
+        <Route path="/" element={<Home />} />
+        <Route path="/project/:id" element={<ProjectDetail />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </div>
+  );
+}
 
 function App() {
   return (
@@ -11,11 +28,10 @@ function App() {
       <ScrollToTop />
       <div className="app">
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/project/:id" element={<ProjectDetail />} />
-        </Routes>
+        <AnimatedRoutes />
         <Footer />
+        <WhatsAppButton />
+        <ThemeToggle />
       </div>
     </Router>
   );

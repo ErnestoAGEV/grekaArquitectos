@@ -1,5 +1,5 @@
 .projects {
-  background-color: #fafafa;
+  background-color: var(--bg-gray);
 }
 
 .projects-filter {

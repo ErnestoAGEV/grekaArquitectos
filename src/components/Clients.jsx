@@ -1,5 +1,5 @@
 import Reveal from "./Reveal";
-import "./Clients.css"; // Will add minimal styles for layout
+import "./Clients.css";
 
 const Clients = () => {
   const clients = [
@@ -41,15 +41,15 @@ const Clients = () => {
             NUESTROS CLIENTES
           </h3>
         </Reveal>
-        <Reveal delay={0.2}>
-          <div className="clients-flex">
-            {clients.map((client, index) => (
+        <div className="marquee-wrapper">
+          <div className="marquee-track">
+            {[...clients, ...clients].map((client, index) => (
               <div key={index} className="client-logo">
-                <img src={client.logo} alt={client.name} />
+                <img src={client.logo} alt={client.name} loading="lazy" />
               </div>
             ))}
           </div>
-        </Reveal>
+        </div>
       </div>
     </section>
   );

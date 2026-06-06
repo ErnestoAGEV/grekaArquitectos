@@ -11,18 +11,18 @@ const Footer = () => {
           | Colima Colima
         </div>
         <div className="social-links">
-          <a href="#">
+          <a href="#" aria-label="LinkedIn">
             <Linkedin size={20} />
           </a>
-          <a href="#">
+          <a href="#" aria-label="Instagram">
             <Instagram size={20} />
           </a>
-          <a href="#">
+          <a href="#" aria-label="Facebook">
             <Facebook size={20} />
           </a>
         </div>
         <div className="copyright">
-          &copy; 2026 Greka Arquitectos. Todos los derechos reservados.
+          &copy; {new Date().getFullYear()} Greka Arquitectos. Todos los derechos reservados.
         </div>
       </div>
     </footer>

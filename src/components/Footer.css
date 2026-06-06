@@ -1,9 +1,13 @@
 .footer {
-  background-color: #0b111e; /* Darker than primary */
+  background-color: #0b111e;
   color: rgba(255,255,255,0.6);
   padding: 40px 0;
   text-align: center;
   font-size: 0.9rem;
+}
+
+[data-theme="dark"] .footer {
+  background-color: #060a13;
 }
 
 .footer-container {
