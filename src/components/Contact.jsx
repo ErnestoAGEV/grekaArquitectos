@@ -44,7 +44,7 @@ const Contact = () => {
 
             <div className="info-item">
               <h4>Dirección</h4>
-              <p>General Nuñez #393, Colima Colima</p>
+              <p>Calle Gral. Silverio Núñez 393, Centro, 28000 Colima, Col.</p>
             </div>
 
             <div className="info-item">
@@ -109,7 +109,7 @@ const Contact = () => {
 
       <div className="contact-map">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.8!2d-103.724!3d19.2433!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x84255ab5cf34c07d%3A0x4ef7e55265b2e95e!2sColima%2C%20Col.!5e0!3m2!1ses!2smx!4v1700000000000"
+          src="https://maps.google.com/maps?q=Calle+Gral.+Silverio+N%C3%BA%C3%B1ez+393,+Centro,+28000+Colima,+Col.,+Mexico&t=&z=17&ie=UTF8&iwloc=&output=embed"
           width="100%"
           height="350"
           style={{ border: 0 }}

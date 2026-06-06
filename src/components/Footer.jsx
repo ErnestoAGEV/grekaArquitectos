@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="footer-links">
           <a href="#">GREKA ARQUITECTOS</a> |{" "}
           <a href="mailto:facturas.greka@gmail.com">facturas.greka@gmail.com</a>{" "}
-          | Colima Colima
+          | Colima, Col.
         </div>
         <div className="social-links">
           <a href="#" aria-label="LinkedIn">
