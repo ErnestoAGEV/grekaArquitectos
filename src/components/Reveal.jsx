@@ -5,26 +5,27 @@ export const Reveal = ({ children, delay = 0 }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    const node = ref.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          observer.unobserve(entry.target); // Run once
+          observer.unobserve(entry.target);
         }
       },
       {
-        threshold: 0.1, // Trigger when 10% visible
-        rootMargin: "0px 0px -50px 0px", // Offset slightly so it doesn't trigger too early at bottom
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
       },
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    if (node) {
+      observer.observe(node);
     }
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (node) {
+        observer.unobserve(node);
       }
     };
   }, []);

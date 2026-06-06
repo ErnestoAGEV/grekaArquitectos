@@ -29,9 +29,15 @@ const About = () => {
               multidisciplinario aborda cada desafío con creatividad, precisión
               técnica y una profunda sensibilidad estética.
             </p>
-            <a href="#contact" className="btn btn-outline-dark">
+            <button
+              className="btn btn-outline-dark"
+              onClick={() => {
+                const el = document.getElementById("contact");
+                if (el) el.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
               Contáctanos
-            </a>
+            </button>
           </Reveal>
         </div>
       </div>

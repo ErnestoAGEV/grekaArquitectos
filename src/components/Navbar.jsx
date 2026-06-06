@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocation, Link, useNavigate } from "react-router-dom"; // Import routing hooks
+import { useLocation, Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logo from "../assets/grekaLogoSinBg.png";
 import "./Navbar.css";
@@ -8,7 +8,8 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
+
+  const isHome = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,6 +26,9 @@ const Navbar = () => {
     } else {
       document.body.style.overflow = "unset";
     }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
   }, [isOpen]);
 
   // Helper to determine link target
@@ -53,7 +57,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
+    <nav className={`navbar ${scrolled || !isHome ? "scrolled" : ""}`}>
       <div className="container navbar-container">
         <Link to="/" className="logo">
           <img src={logo} alt="Greka Arquitectos" />

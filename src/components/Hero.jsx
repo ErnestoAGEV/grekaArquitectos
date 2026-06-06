@@ -13,9 +13,15 @@ const Hero = () => {
           <p>Arquitectura contemporánea con un enfoque sostenible y humano.</p>
         </Reveal>
         <Reveal delay={0.4}>
-          <a href="#projects" className="btn btn-outline">
+          <button
+            className="btn btn-outline"
+            onClick={() => {
+              const el = document.getElementById("projects");
+              if (el) el.scrollIntoView({ behavior: "smooth" });
+            }}
+          >
             Ver Proyectos
-          </a>
+          </button>
         </Reveal>
       </div>
     </section>

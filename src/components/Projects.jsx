@@ -58,9 +58,9 @@ const Projects = () => {
           ))}
         </div>
         <div className="text-center" style={{ marginTop: "40px" }}>
-          <a href="#" className="btn">
+          <button className="btn" onClick={() => setFilter("Todos")}>
             Ver Todos
-          </a>
+          </button>
         </div>
       </div>
     </section>
