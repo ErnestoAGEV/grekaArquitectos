@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Greka Arquitectos</title>
+  <script>
+    // Single Page App hack for GitHub Pages
+    // Converts path-based URLs to hash-based URLs for HashRouter
+    var basePath = '/grekaArquitectos';
+    var path = window.location.pathname.replace(basePath, '');
+    var search = window.location.search;
+    var hash = window.location.hash;
+    // Redirect to the base URL with the path converted to a hash route
+    if (path && path !== '/' && path !== '') {
+      window.location.replace(basePath + '/#' + path + search + hash);
+    } else {
+      window.location.replace(basePath + '/');
+    }
+  </script>
+</head>
+<body>
+</body>
+</html>
