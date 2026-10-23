@@ -3,13 +3,13 @@ import Hero from "../components/Hero";
 import About from "../components/About";
 import Services from "../components/Services";
 import Projects from "../components/Projects";
-import Testimonials from "../components/Testimonials";
-import Clients from "../components/Clients";
+import Process from "../components/Process";
+import FAQ from "../components/FAQ";
 import Contact from "../components/Contact";
 
 const Home = () => {
   useEffect(() => {
-    document.title = "Greka Arquitectos | Diseño Sostenible y Funcional";
+    document.title = "Greka Arquitectos | Arquitectura e interiorismo en Colima";
   }, []);
 
   return (
@@ -18,8 +18,8 @@ const Home = () => {
       <About />
       <Services />
       <Projects />
-      <Testimonials />
-      <Clients />
+      <Process />
+      <FAQ />
       <Contact />
     </main>
   );

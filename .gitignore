@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Fotos originales sin optimizar (ver scripts/optimize-photos.py)
+fotos-originales/

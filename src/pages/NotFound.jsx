@@ -1,17 +1,21 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./NotFound.css";
 
 const NotFound = () => {
+  useEffect(() => {
+    document.title = "Página no encontrada | Greka Arquitectos";
+  }, []);
+
   return (
-    <div className="not-found">
-      <div className="not-found-content">
-        <h1>404</h1>
-        <p>La página que buscas no existe.</p>
-        <Link to="/" className="btn">
-          Volver al Inicio
-        </Link>
-      </div>
-    </div>
+    <main className="not-found container">
+      <p className="label">Error 404</p>
+      <h1 className="display">Este espacio aún no existe</h1>
+      <p>La página que buscas no está aquí, pero podemos llevarte de vuelta.</p>
+      <Link to="/" className="btn btn-solid">
+        Volver al inicio
+      </Link>
+    </main>
   );
 };
 

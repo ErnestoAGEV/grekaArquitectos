@@ -1,129 +1,122 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { projectsData } from "../data/projects";
+import { motion } from "motion/react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { projectsData } from "../data/projects";
 import Lightbox from "../components/Lightbox";
+import Reveal from "../components/Reveal";
+import NotFound from "./NotFound";
 import "./ProjectDetail.css";
+
+const ease = [0.22, 1, 0.36, 1];
 
 const ProjectDetail = () => {
   const { id } = useParams();
-  const project = projectsData.find((p) => p.id === parseInt(id));
-
+  const project = projectsData.find((p) => p.id === Number(id));
   const [lightboxIndex, setLightboxIndex] = useState(null);
 
-  // SEO - dynamic document title
   useEffect(() => {
-    if (project) {
-      document.title = `${project.title} | Greka Arquitectos`;
-    } else {
-      document.title = "Proyecto no encontrado | Greka Arquitectos";
-    }
-    return () => {
-      document.title = "Greka Arquitectos";
-    };
+    document.title = project
+      ? `${project.title} | Greka Arquitectos`
+      : "Proyecto no encontrado | Greka Arquitectos";
   }, [project]);
 
-  if (!project) {
-    return (
-      <div className="container" style={{ paddingTop: "100px" }}>
-        Proyecto no encontrado
-      </div>
-    );
-  }
+  if (!project) return <NotFound />;
 
-  const currentIdx = projectsData.findIndex((p) => p.id === project.id);
-  const nextProject = projectsData[currentIdx + 1] || projectsData[0];
+  const idx = projectsData.indexOf(project);
+  const next = projectsData[(idx + 1) % projectsData.length];
+  const facts = [
+    ["Tipo", project.type],
+    ["Categoría", project.category],
+    ["Ubicación", project.location],
+    ["Año", project.year],
+    ["Superficie", project.area],
+  ].filter(([, v]) => v);
 
   return (
-    <div className="project-detail">
-      <div className="project-hero">
-        <img src={project.image} alt={project.title} />
-        <div className="project-hero-overlay">
-          <div className="container">
-            <h1>{project.title}</h1>
-          </div>
-        </div>
-      </div>
-
-      <div className="container">
-        <div className="project-content-grid">
-          <div className="project-description detail-section">
-            <h2>Detalle de Proyecto</h2>
-            <p>{project.description}</p>
-            <p>
-              Este proyecto representa la filosofía de Greka Arquitectos: crear
-              espacios que inspiren, conecten con la naturaleza y eleven la
-              calidad de vida de quienes los habitan. Cada detalle ha sido
-              cuidadosamente planeado para asegurar funcionalidad y estética.
-            </p>
-          </div>
-
-          <div className="project-details detail-section">
-            <div className="technical-card">
-              <h3>FICHA TÉCNICA</h3>
-              <div className="tech-grid" style={{ marginTop: "20px" }}>
-                <div className="tech-item">
-                  <h4>Ubicación</h4>
-                  <p>{project.location}</p>
-                </div>
-                <div className="tech-item">
-                  <h4>Área</h4>
-                  <p>{project.area}</p>
-                </div>
-                <div className="tech-item">
-                  <h4>Año</h4>
-                  <p>{project.year}</p>
-                </div>
-                <div className="tech-item">
-                  <h4>Cliente</h4>
-                  <p>{project.client}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="project-gallery detail-section">
-          <h2>Galería</h2>
-          <div className="gallery-grid">
-            {project.gallery.map((img, index) => (
-              <div
-                key={index}
-                className="gallery-item"
-                onClick={() => setLightboxIndex(index)}
+    <main className="project-detail">
+      <section className="pd-hero">
+        <motion.img
+          src={project.cover.src}
+          alt=""
+          fetchPriority="high"
+          initial={{ scale: 1.12 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.6, ease }}
+        />
+        <div className="pd-hero-veil" />
+        <div className="container pd-hero-content">
+          <Link to="/#projects" className="label pd-back">
+            <ArrowLeft size={14} aria-hidden="true" /> Proyectos
+          </Link>
+          <h1 className="display pd-title">
+            <span className="pd-line">
+              <motion.span
+                initial={{ y: "110%" }}
+                animate={{ y: "0%" }}
+                transition={{ duration: 1.1, delay: 0.2, ease }}
               >
-                <img
-                  src={img}
-                  alt={`${project.title} vista ${index + 1}`}
-                  loading="lazy"
-                />
+                {project.title}
+              </motion.span>
+            </span>
+          </h1>
+        </div>
+      </section>
+
+      <section className="container pd-intro">
+        <Reveal>
+          <p className="pd-description">{project.description}</p>
+        </Reveal>
+        <Reveal delay={0.1}>
+          <dl className="pd-facts">
+            {facts.map(([k, v]) => (
+              <div key={k}>
+                <dt className="label">{k}</dt>
+                <dd>{v}</dd>
               </div>
             ))}
-          </div>
-        </div>
+          </dl>
+        </Reveal>
+      </section>
 
-        <div className="project-nav">
-          <Link to="/#projects" className="nav-btn">
-            <ArrowLeft size={20} /> Volver a Proyectos
-          </Link>
+      <section className="container pd-gallery" aria-label="Galería">
+        {project.gallery.map((img, i) => (
+          <motion.button
+            key={img.src}
+            className="pd-gallery-item"
+            onClick={() => setLightboxIndex(i)}
+            aria-label={`Ampliar foto ${i + 1} de ${project.gallery.length}`}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "0px 0px -40px 0px" }}
+            transition={{ duration: 0.8 }}
+          >
+            <img src={img.sm} alt="" loading="lazy" decoding="async" width={img.w} height={img.h} />
+          </motion.button>
+        ))}
+      </section>
 
-          {nextProject && (
-            <Link to={`/project/${nextProject.id}`} className="nav-btn">
-              Siguiente: {nextProject.title} <ArrowRight size={20} />
-            </Link>
-          )}
+      <Link to={`/project/${next.id}`} className="pd-next">
+        <img src={next.cover.sm} alt="" loading="lazy" />
+        <div className="pd-next-veil" />
+        <div className="container pd-next-content">
+          <span className="label">Siguiente proyecto</span>
+          <span className="display pd-next-title">
+            {next.title} <ArrowRight size={32} strokeWidth={1.25} aria-hidden="true" />
+          </span>
         </div>
-      </div>
+      </Link>
 
       {lightboxIndex !== null && (
         <Lightbox
           images={project.gallery}
+          title={project.title}
           currentIndex={lightboxIndex}
           onClose={() => setLightboxIndex(null)}
           onNavigate={setLightboxIndex}
         />
       )}
-    </div>
+    </main>
   );
 };
 

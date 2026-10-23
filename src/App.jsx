@@ -1,4 +1,5 @@
 import { HashRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { MotionConfig, motion } from "motion/react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -11,29 +12,35 @@ import ThemeToggle from "./components/ThemeToggle";
 function AnimatedRoutes() {
   const location = useLocation();
 
+  // Sólo animación de entrada: sin exit no hay salto de scroll entre páginas
   return (
-    <div className="page-transition" key={location.pathname}>
+    <motion.div
+      key={location.pathname}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+    >
       <Routes location={location}>
         <Route path="/" element={<Home />} />
         <Route path="/project/:id" element={<ProjectDetail />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </div>
+    </motion.div>
   );
 }
 
 function App() {
   return (
-    <Router>
-      <ScrollToTop />
-      <div className="app">
+    <MotionConfig reducedMotion="user">
+      <Router>
+        <ScrollToTop />
         <Navbar />
         <AnimatedRoutes />
         <Footer />
         <WhatsAppButton />
         <ThemeToggle />
-      </div>
-    </Router>
+      </Router>
+    </MotionConfig>
   );
 }
 

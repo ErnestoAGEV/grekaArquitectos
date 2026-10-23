@@ -1,20 +1,55 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./src/assets/grekaLogoSinBg.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Greka Arquitectos: Estudio de arquitectura contemporánea enfocado en diseño sostenible y funcional. Proyectos residenciales, comerciales y urbanos." />
-    <meta name="keywords" content="arquitectura, diseño, construcción, sostenible, moderno, proyectos, residencial" />
+    <link rel="icon" type="image/png" href="./favicon.png" />
+    <title>Greka Arquitectos | Arquitectura e interiorismo en Colima</title>
+    <meta name="description" content="Somos Greka Arquitectos, estudio de arquitectura en Colima. Diseñamos y construimos casas, espacios comerciales e interiores con más de 10 años de experiencia." />
+    <meta name="theme-color" content="#14161a" />
     <meta property="og:title" content="Greka Arquitectos" />
-    <meta property="og:description" content="Diseñamos espacios que trascienden el tiempo. Arquitectura contemporánea con enfoque humano." />
+    <meta property="og:description" content="Estudio de arquitectura en Colima. Diseñamos y construimos casas, comercios e interiores." />
     <meta property="og:type" content="website" />
-    <script>
-      if ('scrollRestoration' in history) {
-        history.scrollRestoration = 'manual';
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:url" content="https://ernestoagev.github.io/grekaArquitectos/" />
+    <meta property="og:image" content="https://ernestoagev.github.io/grekaArquitectos/og-image.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,300..600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Greka Arquitectos",
+        "description": "Estudio de arquitectura e interiorismo en Colima, México.",
+        "url": "https://ernestoagev.github.io/grekaArquitectos/",
+        "telephone": "+52 312 314 3828",
+        "email": "facturas.greka@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Calle Gral. Silverio Núñez 393, Centro",
+          "addressLocality": "Colima",
+          "addressRegion": "Colima",
+          "postalCode": "28000",
+          "addressCountry": "MX"
+        },
+        "areaServed": "México",
+        "sameAs": ["https://www.facebook.com/greka.arquitectos"]
       }
     </script>
-    <title>Greka Arquitectos</title>
+    <script>
+      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+      // Aplica el tema antes del primer render para evitar parpadeo
+      try {
+        var t = localStorage.getItem("theme");
+        if (t) document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -3,14 +3,16 @@ import { Sun, Moon } from "lucide-react";
 import "./ThemeToggle.css";
 
 const ThemeToggle = () => {
-  const [dark, setDark] = useState(() => {
-    const saved = localStorage.getItem("theme");
-    return saved === "dark";
-  });
+  // index.html ya aplicó el tema guardado antes del render
+  const [dark, setDark] = useState(() => document.documentElement.getAttribute("data-theme") === "dark");
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
-    localStorage.setItem("theme", dark ? "dark" : "light");
+    try {
+      localStorage.setItem("theme", dark ? "dark" : "light");
+    } catch {
+      // Sin almacenamiento disponible: el tema sólo dura esta visita
+    }
   }, [dark]);
 
   return (
