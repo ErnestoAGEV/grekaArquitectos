@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <title>Greka Arquitectos</title>
   <script>
-    // Single Page App hack for GitHub Pages
+    // Single Page App hack: rutas sin hash redirigen a la ruta con hash
     // Converts path-based URLs to hash-based URLs for HashRouter
-    var basePath = '/grekaArquitectos';
+    var basePath = '';
     var path = window.location.pathname.replace(basePath, '');
     var search = window.location.search;
     var hash = window.location.hash;
