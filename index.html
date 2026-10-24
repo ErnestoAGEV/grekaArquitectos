@@ -14,6 +14,9 @@
     <meta property="og:url" content="https://grekaarquitectos.com/" />
     <meta property="og:image" content="https://grekaarquitectos.com/og-image.jpg" />
 
+    <!-- El contenido y las fotos vienen de Sanity: abrir la conexión antes de que cargue el JS -->
+    <link rel="preconnect" href="https://w49vic6b.apicdn.sanity.io" crossorigin />
+    <link rel="preconnect" href="https://cdn.sanity.io" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -24,13 +27,17 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
+        "@graph": [
+      {
         "@type": "ProfessionalService",
+        "@id": "https://grekaarquitectos.com/#business",
+        "additionalType": "http://www.productontology.org/id/Architecture_firm",
         "name": "Greka Arquitectos",
         "description": "Estudio de arquitectura e interiorismo en Colima, México.",
         "url": "https://grekaarquitectos.com/",
         "image": "https://grekaarquitectos.com/og-image.jpg",
         "logo": "https://grekaarquitectos.com/favicon.png",
-        "telephone": "+52 312 314 3828",
+        "telephone": "+523123143828",
         "email": "facturas.greka@gmail.com",
         "address": {
           "@type": "PostalAddress",
@@ -44,7 +51,18 @@
           { "@type": "City", "name": "Colima" },
           { "@type": "State", "name": "Colima" }
         ],
+        "knowsAbout": ["Arquitectura", "Diseño de interiores", "Interiorismo comercial", "Vivienda unifamiliar"],
         "sameAs": ["https://www.facebook.com/greka.arquitectos"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://grekaarquitectos.com/#website",
+        "url": "https://grekaarquitectos.com/",
+        "name": "Greka Arquitectos",
+        "inLanguage": "es-MX",
+        "publisher": { "@id": "https://grekaarquitectos.com/#business" }
+      }
+        ]
       }
     </script>
     <script>

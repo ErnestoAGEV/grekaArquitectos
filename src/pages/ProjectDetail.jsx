@@ -39,7 +39,7 @@ const ProjectDetail = () => {
       <section className="pd-hero">
         <motion.img
           src={project.cover.src}
-          alt=""
+          alt={project.title}
           fetchPriority="high"
           initial={{ scale: 1.12 }}
           animate={{ scale: 1 }}
@@ -92,13 +92,13 @@ const ProjectDetail = () => {
             viewport={{ once: true, margin: "0px 0px -40px 0px" }}
             transition={{ duration: 0.8 }}
           >
-            <img src={img.sm} alt="" loading="lazy" decoding="async" width={img.w} height={img.h} />
+            <img src={img.sm} alt={`${project.title}, foto ${i + 1}`} loading="lazy" decoding="async" width={img.w} height={img.h} />
           </motion.button>
         ))}
       </section>
 
       <Link to={`/project/${next.id}`} className="pd-next">
-        <img src={next.cover.sm} alt="" loading="lazy" />
+        <img src={next.cover.sm} alt="" loading="lazy" width={next.cover.w} height={next.cover.h} />
         <div className="pd-next-veil" />
         <div className="container pd-next-content">
           <span className="label">Siguiente proyecto</span>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- shortcut: lista fija de proyectos; si agregan proyectos en Sanity, agregarlos aquí o generar el sitemap en el build -->
+<!-- Respaldo: scripts/prerender-meta.mjs lo regenera en el build con los proyectos de Sanity -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://grekaarquitectos.com/</loc></url>
   <url><loc>https://grekaarquitectos.com/project/marina-san-fernando</loc></url>

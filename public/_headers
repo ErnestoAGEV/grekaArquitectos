@@ -1,0 +1,7 @@
+/*
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# Archivos con hash en el nombre: nunca cambian
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
