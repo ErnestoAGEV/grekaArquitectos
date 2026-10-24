@@ -2,22 +2,17 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Greka Arquitectos</title>
+  <title>Greka Arquitectos se mudó a grekaarquitectos.com</title>
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="https://grekaarquitectos.com/">
+  <meta http-equiv="refresh" content="0; url=https://grekaarquitectos.com/">
   <script>
-    // Single Page App hack for GitHub Pages
-    // Converts path-based URLs to hash-based URLs for HashRouter
-    var basePath = '/grekaArquitectos';
-    var path = window.location.pathname.replace(basePath, '');
-    var search = window.location.search;
-    var hash = window.location.hash;
-    // Redirect to the base URL with the path converted to a hash route
-    if (path && path !== '/' && path !== '') {
-      window.location.replace(basePath + '/#' + path + search + hash);
-    } else {
-      window.location.replace(basePath + '/');
-    }
+    // Links viejos con HashRouter (#/project/x) van a la misma página en el dominio nuevo
+    var h = location.hash;
+    location.replace("https://grekaarquitectos.com" + (h.indexOf("#/") === 0 ? h.slice(1) : "/" + h));
   </script>
 </head>
 <body>
+  <p>Nos mudamos a <a href="https://grekaarquitectos.com/">grekaarquitectos.com</a>.</p>
 </body>
 </html>
