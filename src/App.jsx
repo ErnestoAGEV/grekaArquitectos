@@ -16,7 +16,14 @@ function AnimatedRoutes() {
 
   // Canonical siempre al dominio principal, así www y pages.dev no cuentan como duplicados
   useEffect(() => {
-    document.querySelector('link[rel="canonical"]')?.setAttribute("href", `https://grekaarquitectos.com${location.pathname}`);
+    // Se crea aquí y no en index.html: un canonical fijo a "/" chocaría con el de cada proyecto
+    let link = document.querySelector('link[rel="canonical"]');
+    if (!link) {
+      link = document.createElement("link");
+      link.rel = "canonical";
+      document.head.appendChild(link);
+    }
+    link.href = `https://grekaarquitectos.com${location.pathname}`;
   }, [location.pathname]);
 
   // Sólo animación de entrada: sin exit no hay salto de scroll entre páginas
