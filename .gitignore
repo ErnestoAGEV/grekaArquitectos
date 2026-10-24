@@ -25,3 +25,6 @@ dist-ssr
 
 # Fotos originales sin optimizar (ver scripts/optimize-photos.py)
 fotos-originales/
+
+# Archivos generados por sanity dev
+.sanity

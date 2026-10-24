@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "motion/react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { projectsData } from "../data/projects";
+import { useContent } from "../data/useContent";
 import Lightbox from "../components/Lightbox";
 import Reveal from "../components/Reveal";
 import NotFound from "./NotFound";
@@ -12,7 +12,8 @@ const ease = [0.22, 1, 0.36, 1];
 
 const ProjectDetail = () => {
   const { id } = useParams();
-  const project = projectsData.find((p) => p.id === Number(id));
+  const { projects } = useContent();
+  const project = projects.find((p) => p.id === id);
   const [lightboxIndex, setLightboxIndex] = useState(null);
 
   useEffect(() => {
@@ -23,8 +24,8 @@ const ProjectDetail = () => {
 
   if (!project) return <NotFound />;
 
-  const idx = projectsData.indexOf(project);
-  const next = projectsData[(idx + 1) % projectsData.length];
+  const idx = projects.indexOf(project);
+  const next = projects[(idx + 1) % projects.length];
   const facts = [
     ["Tipo", project.type],
     ["Categoría", project.category],

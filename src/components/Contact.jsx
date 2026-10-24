@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import Reveal from "./Reveal";
+import { useContent } from "../data/useContent";
 import "./Contact.css";
 
 const Contact = () => {
   // idle | sending | sent | error
   const [status, setStatus] = useState("idle");
+  const { title, lead, address, phone, email } = useContent().site.contact;
+  const place = encodeURIComponent(address);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,42 +33,31 @@ const Contact = () => {
       <div className="container">
         <Reveal>
           <p className="label">06 — Contacto</p>
-          <h2 className="display contact-title">
-            Platiquemos
-            <br />
-            tu proyecto
-          </h2>
+          <h2 className="display contact-title">{title}</h2>
         </Reveal>
 
         <div className="contact-grid">
           <Reveal className="contact-info">
-            <p className="contact-lead">
-              Cuéntanos qué tienes en mente. Te respondemos personalmente para agendar una primera
-              reunión.
-            </p>
+            <p className="contact-lead">{lead}</p>
             <dl>
               <div>
                 <dt className="label">Estudio</dt>
                 <dd>
-                  <a
-                    href="https://maps.google.com/?q=Calle+Gral.+Silverio+N%C3%BA%C3%B1ez+393,+Centro,+28000+Colima"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Calle Gral. Silverio Núñez 393, Centro, 28000 Colima, Col.
+                  <a href={`https://maps.google.com/?q=${place}`} target="_blank" rel="noopener noreferrer">
+                    {address}
                   </a>
                 </dd>
               </div>
               <div>
                 <dt className="label">Teléfono</dt>
                 <dd>
-                  <a href="tel:+523123143828">+52 312 314 3828</a>
+                  <a href={`tel:${phone.replace(/[^\d+]/g, "")}`}>{phone}</a>
                 </dd>
               </div>
               <div>
                 <dt className="label">Correo</dt>
                 <dd>
-                  <a href="mailto:facturas.greka@gmail.com">facturas.greka@gmail.com</a>
+                  <a href={`mailto:${email}`}>{email}</a>
                 </dd>
               </div>
             </dl>
@@ -119,7 +111,7 @@ const Contact = () => {
 
       <div className="contact-map">
         <iframe
-          src="https://maps.google.com/maps?q=Calle+Gral.+Silverio+N%C3%BA%C3%B1ez+393,+Centro,+28000+Colima,+Col.,+Mexico&t=&z=16&ie=UTF8&iwloc=&output=embed"
+          src={`https://maps.google.com/maps?q=${place}&t=&z=16&ie=UTF8&iwloc=&output=embed`}
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
           title="Ubicación de Greka Arquitectos en Colima"

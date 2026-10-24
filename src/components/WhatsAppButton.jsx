@@ -1,11 +1,11 @@
 import { MessageCircle } from "lucide-react";
+import { useContent } from "../data/useContent";
 import "./WhatsAppButton.css";
 
 const WhatsAppButton = () => {
-  const phone = "5213123143828";
-  const message = encodeURIComponent(
-    "Hola, me gustaría obtener más información sobre sus servicios de arquitectura.",
-  );
+  const { whatsapp, whatsappMessage } = useContent().site.contact;
+  const phone = whatsapp.replace(/\D/g, "");
+  const message = encodeURIComponent(whatsappMessage);
 
   return (
     <a

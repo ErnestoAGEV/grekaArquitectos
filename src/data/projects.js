@@ -11,8 +11,8 @@ const placeholders = {
   "casa-cuarzita": ["1600585154526-990dced4db0d", "1600210492486-724fe5c67fb0", "1600607688969-a5bfcd646154"],
 };
 
-const galleryFor = (slug) => {
-  const real = photos[slug];
+export const galleryFor = (slug) => {
+  const real = Object.hasOwn(photos, slug) ? photos[slug] : undefined;
   if (real?.length) {
     return real.map((p) => ({
       src: import.meta.env.BASE_URL + p.src,
@@ -21,13 +21,12 @@ const galleryFor = (slug) => {
       h: p.h,
     }));
   }
-  return placeholders[slug].map((id) => ({ src: unsplash(id), sm: unsplash(id), w: 1600, h: 1067 }));
+  return (placeholders[slug] ?? placeholders["casa-kosmos"]).map((id) => ({ src: unsplash(id), sm: unsplash(id), w: 1600, h: 1067 }));
 };
 
 // Sólo datos confirmados; los campos opcionales (ubicación, año, área) se muestran si existen.
 const projects = [
   {
-    id: 1,
     slug: "marina-san-fernando",
     title: "Marina San Fernando",
     category: "Comercial",
@@ -38,7 +37,6 @@ const projects = [
       "Diseñamos el interior de la tienda Marina en Plaza San Fernando. Organizamos los departamentos alrededor de circulaciones amplias y usamos plafones, iluminación y materiales que dan unidad a todo el piso de venta, para que el producto sea el protagonista.",
   },
   {
-    id: 2,
     slug: "casa-kosmos",
     title: "Casa Kosmos",
     category: "Residencial",
@@ -48,7 +46,6 @@ const projects = [
       "Proyectamos Casa Kosmos alrededor de la vida diaria de la familia: espacios abiertos, buena luz natural y una relación directa entre el interior y el exterior. Cada espacio tiene una razón de ser y una proporción cuidada.",
   },
   {
-    id: 3,
     slug: "marina-guanajuato",
     title: "Marina Guanajuato",
     category: "Comercial",
@@ -59,7 +56,6 @@ const projects = [
       "Llevamos el concepto de la tienda Marina a Guanajuato. Trabajamos recorridos claros entre departamentos, plafones con ritmo propio e iluminación pensada para resaltar cada área de venta.",
   },
   {
-    id: 4,
     slug: "casa-cuarzita",
     title: "Casa Cuarzita",
     category: "Residencial",
@@ -72,5 +68,5 @@ const projects = [
 
 export const projectsData = projects.map((p) => {
   const gallery = galleryFor(p.slug);
-  return { ...p, cover: gallery[0], gallery };
+  return { ...p, id: p.slug, cover: gallery[0], gallery };
 });

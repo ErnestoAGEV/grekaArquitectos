@@ -2,10 +2,9 @@ import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
 import { ArrowDown } from "lucide-react";
-import { projectsData } from "../data/projects";
+import { useContent } from "../data/useContent";
 import "./Hero.css";
 
-const headline = ["Diseñamos", "espacios", "que se viven"];
 const ease = [0.22, 1, 0.36, 1];
 
 const Hero = () => {
@@ -14,7 +13,10 @@ const Hero = () => {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["0%", reduce ? "0%" : "18%"]);
   const scale = useTransform(scrollYProgress, [0, 1], [1.08, reduce ? 1.08 : 1.18]);
-  const cover = projectsData[0].cover;
+  const { projects, site } = useContent();
+  const { eyebrow, lead } = site.hero;
+  const headline = site.hero.headline.split("\n").filter(Boolean);
+  const cover = site.hero.image ?? projects[0].cover;
 
   return (
     <section className="hero" id="home" ref={ref}>
@@ -30,12 +32,12 @@ const Hero = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.2 }}
         >
-          Estudio de arquitectura — Colima, México
+          {eyebrow}
         </motion.p>
 
         <h1 className="display hero-title" aria-label={headline.join(" ")}>
           {headline.map((line, i) => (
-            <span className="hero-line" key={line} aria-hidden="true">
+            <span className="hero-line" key={i} aria-hidden="true">
               <motion.span
                 initial={{ y: "110%" }}
                 animate={{ y: "0%" }}
@@ -53,10 +55,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.9, ease }}
         >
-          <p className="hero-lead">
-            Somos Greka Arquitectos. Proyectamos y construimos casas, comercios e interiores pensados
-            para durar y para quienes los habitan.
-          </p>
+          <p className="hero-lead">{lead}</p>
           <div className="hero-actions">
             <Link to="/#projects" className="btn hero-btn-solid">
               Ver proyectos

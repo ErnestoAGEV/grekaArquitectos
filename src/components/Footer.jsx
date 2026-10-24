@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Facebook } from "lucide-react";
+import { useContent } from "../data/useContent";
 import "./Footer.css";
 
 const nav = [
@@ -11,16 +12,16 @@ const nav = [
   ["contact", "Contacto"],
 ];
 
-const Footer = () => (
+const Footer = () => {
+  const { site } = useContent();
+  const { address, phone, email, facebook } = site.contact;
+
+  return (
   <footer className="footer">
     <div className="container">
       <div className="footer-grid">
         <div>
-          <p className="footer-claim">
-            Arquitectura e interiorismo
-            <br />
-            desde Colima.
-          </p>
+          <p className="footer-claim">{site.footer.claim}</p>
           <Link to="/#contact" className="btn footer-btn">
             Cotiza tu proyecto
           </Link>
@@ -40,23 +41,20 @@ const Footer = () => (
         <div>
           <p className="label">Contacto</p>
           <ul>
-            <li>Gral. Silverio Núñez 393, Centro, Colima</li>
+            <li>{address}</li>
             <li>
-              <a href="tel:+523123143828">312 314 3828</a>
+              <a href={`tel:${phone.replace(/[^\d+]/g, "")}`}>{phone}</a>
             </li>
             <li>
-              <a href="mailto:facturas.greka@gmail.com">facturas.greka@gmail.com</a>
+              <a href={`mailto:${email}`}>{email}</a>
             </li>
-            <li>
-              <a
-                href="https://www.facebook.com/greka.arquitectos"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="footer-social"
-              >
-                <Facebook size={16} aria-hidden="true" /> Facebook
-              </a>
-            </li>
+            {facebook && (
+              <li>
+                <a href={facebook} target="_blank" rel="noopener noreferrer" className="footer-social">
+                  <Facebook size={16} aria-hidden="true" /> Facebook
+                </a>
+              </li>
+            )}
           </ul>
         </div>
       </div>
@@ -71,6 +69,7 @@ const Footer = () => (
       </div>
     </div>
   </footer>
-);
+  );
+};
 
 export default Footer;

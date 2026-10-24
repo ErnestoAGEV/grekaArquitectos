@@ -8,6 +8,7 @@ import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 import WhatsAppButton from "./components/WhatsAppButton";
 import ThemeToggle from "./components/ThemeToggle";
+import { useContent } from "./data/useContent";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -30,6 +31,9 @@ function AnimatedRoutes() {
 }
 
 function App() {
+  // Espera el contenido de Sanity (máx. 5 s) para no mostrar textos viejos y luego cambiarlos.
+  if (!useContent().ready) return null;
+
   return (
     <MotionConfig reducedMotion="user">
       <Router>
