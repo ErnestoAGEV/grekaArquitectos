@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-// Con HashRouter los links a secciones son "/#id": la ruta es "/" y el hash es "#id".
+// Los links a secciones son "/#id": la ruta es "/" y el hash es "#id".
 // Dependemos de `key` para que repetir el mismo link vuelva a hacer scroll.
 export default function ScrollToTop() {
   const { pathname, hash, key } = useLocation();

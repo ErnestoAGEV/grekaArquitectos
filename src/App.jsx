@@ -1,4 +1,5 @@
-import { HashRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import { MotionConfig, motion } from "motion/react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -12,6 +13,11 @@ import { useContent } from "./data/useContent";
 
 function AnimatedRoutes() {
   const location = useLocation();
+
+  // Canonical siempre al dominio principal, así www y pages.dev no cuentan como duplicados
+  useEffect(() => {
+    document.querySelector('link[rel="canonical"]')?.setAttribute("href", `https://grekaarquitectos.com${location.pathname}`);
+  }, [location.pathname]);
 
   // Sólo animación de entrada: sin exit no hay salto de scroll entre páginas
   return (

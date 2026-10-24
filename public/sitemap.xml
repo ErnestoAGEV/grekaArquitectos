@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- shortcut: lista fija de proyectos; si agregan proyectos en Sanity, agregarlos aquí o generar el sitemap en el build -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://grekaarquitectos.com/</loc></url>
+  <url><loc>https://grekaarquitectos.com/project/marina-san-fernando</loc></url>
+  <url><loc>https://grekaarquitectos.com/project/casa-kosmos</loc></url>
+  <url><loc>https://grekaarquitectos.com/project/marina-guanajuato</loc></url>
+  <url><loc>https://grekaarquitectos.com/project/casa-cuarzita</loc></url>
+</urlset>
