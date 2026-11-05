@@ -9,7 +9,7 @@ import Contact from "../components/Contact";
 
 const Home = () => {
   useEffect(() => {
-    document.title = "Greka Arquitectos | Arquitectura e interiorismo en Colima";
+    document.title = "Arquitectos en Colima | Greka Arquitectos";
   }, []);
 
   return (
