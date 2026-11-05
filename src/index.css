@@ -151,14 +151,21 @@ h4 {
 }
 
 @media (min-width: 900px) {
+  /* Flex con wrap: si la palabra más larga del título (viene del CMS) no cabe junto al párrafo, el párrafo baja en vez de encimarse */
   .section-head {
-    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
     column-gap: 48px;
-    align-items: end;
+  }
+
+  .section-head > :first-child {
+    flex: 1 1 0;
   }
 
   .section-head > :last-child {
-    justify-self: end;
+    flex: 0 1 46ch;
   }
 }
 
