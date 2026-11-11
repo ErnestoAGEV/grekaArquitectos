@@ -34,6 +34,7 @@
   position: relative;
   display: grid;
   gap: 12px;
+  container-type: inline-size;
 }
 
 .process-dot {
@@ -47,7 +48,9 @@
 }
 
 .process-step h3 {
-  font-size: clamp(1.3rem, 1.7vw, 1.75rem);
+  /* 8cqi: "Desarrollamos" (~12em with the wide cut) always fits its column */
+  font-size: min(clamp(1.3rem, 1.7vw, 1.75rem), 8cqi);
+  hyphens: auto;
   font-stretch: 105%;
   text-transform: uppercase;
 }
