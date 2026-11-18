@@ -1,0 +1,3 @@
+# Atajo para el cliente: grekaarquitectos.com/admin abre el Studio de Sanity
+/admin    https://greka.sanity.studio/  302
+/admin/*  https://greka.sanity.studio/  302
